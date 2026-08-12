@@ -3,8 +3,8 @@ n_wavelength_channels,349,count
 n_phase_bins_total,36,count
 n_phase_bins_dayside_facing,4,count
 n_phase_bins_nightside_facing,4,count
-mean_dayside_brightness_temp,2737.1,K
-mean_nightside_brightness_temp,1176.4,K
-mean_day_night_contrast,1560.7,K
-max_day_night_contrast,2194.8,K
-min_day_night_contrast,1251.8,K
+weighted_mean_dayside_brightness_temp,2722.1 +/- 1.7,K
+weighted_mean_nightside_brightness_temp,1237.5 +/- 3.3,K
+weighted_mean_day_night_contrast,1493.2 +/- 3.8,K
+max_day_night_contrast,1804.0 +/- 304.7,K
+min_day_night_contrast,1234.6 +/- 54.2,K
