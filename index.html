@@ -90,11 +90,11 @@ footer a:hover { color: var(--accent); }
     </div>
     <div class="stat-grid">
       <div class="stat"><span>Wavelength channels</span><strong>349</strong></div>
-      <div class="stat"><span>Weighted mean dayside T</span><strong>2751 ± 3 K</strong></div>
-      <div class="stat"><span>Weighted mean nightside T</span><strong>1252 ± 2 K</strong></div>
-      <div class="stat"><span>Weighted mean day-night contrast</span><strong>1493 ± 4 K</strong></div>
+      <div class="stat"><span>Wavelength-avg. dayside T (this page)</span><strong>2751 ± 3 K</strong></div>
+      <div class="stat"><span>Wavelength-avg. nightside T (this page)</span><strong>1252 ± 2 K</strong></div>
+      <div class="stat"><span>Wavelength-avg. day-night contrast</span><strong>1493 ± 4 K</strong></div>
     </div>
-    <p class="callout">A day-night temperature contrast of roughly 1490 K, now with an honest per-wavelength uncertainty band rather than a bare point estimate — this atmosphere is extraordinarily inefficient at redistributing heat compared to typical hot Jupiters, consistent with a dayside hot enough for silicate and metal vapor to condense out on the nightside as the gas cools while rotating away from the star. This is a direct observational signature of atmospheric circulation physics, not a modeled inference, though it still doesn't by itself pin down the redistribution efficiency or wind speeds that a full general-circulation-model comparison would.</p>
+    <p class="callout">A day-night contrast of roughly 1490 K across this bandpass — this atmosphere redistributes heat far less efficiently than typical hot Jupiters, consistent with a dayside hot enough for silicate and metal vapor to condense out on the nightside as the gas cools while rotating away from the star. One caveat that matters here: brightness temperature is inherently wavelength-dependent, since different channels probe different opacities and pressure levels, so the ± 3-4 K on the numbers above describes only the statistical precision of averaging monochromatic values across this bandpass — it isn't a physical bolometric hemisphere temperature. The paper's own per-detector nightside values already show this directly: 926 ± 12 K on one detector (2.70-3.72 μm) versus 1122 ± 10 K on the other (3.82-5.15 μm), a real ~200 K difference between two broad bands alone. A separate JWST/NIRISS phase-curve analysis, which explicitly models the fraction of the spectrum this bandpass doesn't cover, derives proper bolometric effective temperatures of T<sub>day</sub> = 2717 ± 17 K and T<sub>night</sub> = 1562 ± 19 K — the number to use for an actual energy-budget calculation, not this page's wavelength average.</p>
   </section>
 
   <section>
@@ -109,6 +109,8 @@ footer a:hover { color: var(--accent); }
       <li>Evans, T.M. et al., 2017. An ultrahot gas-giant exoplanet with a stratosphere. <em>Nature</em>, 548, pp.58-61.</li>
       <li>Evans, T.M. et al., 2018. Detection of H2O and Evidence for TiO/VO in an Ultra-Hot Exoplanet Atmosphere. <em>The Astrophysical Journal Letters</em>, 822, L4.</li>
       <li>Evans-Soma, T.M., Sing, D.K. et al., 2025. SiO and a super-stellar C/O ratio in the atmosphere of the giant exoplanet WASP-121b. <em>Nature Astronomy</em>, 9(6), pp.845-861 (arXiv:2506.01771) — source paper for the phase-curve data used here.</li>
+      <li>May, E.M. et al., 2023. A JWST NIRSpec Phase Curve for WASP-121b: Dayside Emission Strongest Eastward of the Substellar Point and Nightside Conditions Conducive to Cloud Formation. <em>The Astrophysical Journal Letters</em>, 943(1), L17 (arXiv:2301.03209) — source of the per-detector nightside brightness temperatures quoted above.</li>
+      <li>Splinter, J. et al., 2025. Precise Constraints on the Energy Budget of WASP-121b from its JWST NIRISS/SOSS Phase Curve (arXiv:2509.09760) — source of the bolometric day/night temperatures quoted above.</li>
       <li>Zenodo record <a href="https://doi.org/10.5281/zenodo.20651891">10.5281/zenodo.20651891</a>, "WASP-121b JWST NIRSpec/G395H data products."</li>
       <li>NASA Exoplanet Archive, <a href="https://exoplanetarchive.ipac.caltech.edu/">exoplanetarchive.ipac.caltech.edu</a> — system parameters, queried live via TAP.</li>
     </ol>

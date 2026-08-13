@@ -18,6 +18,24 @@ each phase/wavelength point's own posterior uncertainty (averaging the
 asymmetric upper/lower bounds into a single sigma), and propagates that
 into an uncertainty on the day-night contrast at each wavelength -- rather
 than a bare difference of unweighted means with no error bar.
+
+IMPORTANT: brightness temperature is intrinsically wavelength dependent
+-- different channels probe different opacities and pressure levels in
+the atmosphere. Collapsing the per-wavelength brightness-temperature
+spectrum into one scalar via inverse-variance weighting (done below for
+convenience, as a single summary number) is a weighted MEAN OF
+MONOCHROMATIC brightness temperatures over this NIRSpec/G395H bandpass.
+It is not a physically defined bolometric hemisphere temperature, and
+its small formal error reflects only the statistical precision of that
+average, not a real physical uncertainty on "the" planet's temperature.
+For comparison, this script reports two real published quantities of a
+different, better-defined kind: the paper's own per-detector nightside
+brightness temperatures (926 +/- 12 K on NRS1, 1122 +/- 10 K on NRS2 --
+already showing real wavelength dependence within just two bands), and
+a separate NIRISS/SOSS phase-curve analysis's bolometric effective
+temperatures (Tday = 2717 +/- 17 K, Tnight = 1562 +/- 19 K), which were
+derived by explicitly modeling the unobserved fraction of the spectrum,
+not by averaging monochromatic values.
 """
 
 from __future__ import annotations
@@ -33,6 +51,14 @@ plt.style.use(["science", "no-latex"])
 
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
 FIG_DIR = Path(__file__).resolve().parents[1] / "figures"
+
+# Published comparison values, reported alongside this script's own
+# wavelength-averaged monochromatic statistic, not as a check that it
+# should reproduce -- these are different, better-defined estimators.
+PAPER_NIGHTSIDE_TB_NRS1_K = (926, 12)  # May et al. 2023, NIRSpec/G395H NRS1 (2.70-3.72 um)
+PAPER_NIGHTSIDE_TB_NRS2_K = (1122, 10)  # May et al. 2023, NIRSpec/G395H NRS2 (3.82-5.15 um)
+PAPER_BOLOMETRIC_TDAY_K = (2717, 17)  # separate NIRISS/SOSS phase-curve analysis (arXiv:2509.09760)
+PAPER_BOLOMETRIC_TNIGHT_K = (1562, 19)  # same NIRISS/SOSS analysis
 
 
 def load_wavelength_centers(path: Path) -> np.ndarray:
@@ -88,11 +114,15 @@ def main() -> None:
         writer.writerow(["n_phase_bins_total", len(phase), "count"])
         writer.writerow(["n_phase_bins_dayside_facing", int(dayside_mask.sum()), "count"])
         writer.writerow(["n_phase_bins_nightside_facing", int(nightside_mask.sum()), "count"])
-        writer.writerow(["weighted_mean_dayside_brightness_temp", f"{np.average(dayside_t, weights=1/dayside_t_err**2):.1f} +/- {np.sqrt(1/np.sum(1/dayside_t_err**2)):.1f}", "K"])
-        writer.writerow(["weighted_mean_nightside_brightness_temp", f"{np.average(nightside_t, weights=1/nightside_t_err**2):.1f} +/- {np.sqrt(1/np.sum(1/nightside_t_err**2)):.1f}", "K"])
-        writer.writerow(["weighted_mean_day_night_contrast", f"{mean_contrast:.1f} +/- {mean_contrast_err:.1f}", "K"])
+        writer.writerow(["wavelength_averaged_monochromatic_dayside_Tb_this_script", f"{np.average(dayside_t, weights=1/dayside_t_err**2):.1f} +/- {np.sqrt(1/np.sum(1/dayside_t_err**2)):.1f}", "K (NOT a bolometric temperature -- see docstring)"])
+        writer.writerow(["wavelength_averaged_monochromatic_nightside_Tb_this_script", f"{np.average(nightside_t, weights=1/nightside_t_err**2):.1f} +/- {np.sqrt(1/np.sum(1/nightside_t_err**2)):.1f}", "K (NOT a bolometric temperature -- see docstring)"])
+        writer.writerow(["wavelength_averaged_day_night_contrast_this_script", f"{mean_contrast:.1f} +/- {mean_contrast_err:.1f}", "K (weighted mean of monochromatic contrasts)"])
         writer.writerow(["max_day_night_contrast", f"{contrast.max():.1f} +/- {contrast_err[np.argmax(contrast)]:.1f}", "K"])
         writer.writerow(["min_day_night_contrast", f"{contrast.min():.1f} +/- {contrast_err[np.argmin(contrast)]:.1f}", "K"])
+        writer.writerow(["paper_nightside_Tb_NRS1", f"{PAPER_NIGHTSIDE_TB_NRS1_K[0]} +/- {PAPER_NIGHTSIDE_TB_NRS1_K[1]}", "K (May et al. 2023, NIRSpec/G395H, 2.70-3.72 um)"])
+        writer.writerow(["paper_nightside_Tb_NRS2", f"{PAPER_NIGHTSIDE_TB_NRS2_K[0]} +/- {PAPER_NIGHTSIDE_TB_NRS2_K[1]}", "K (May et al. 2023, NIRSpec/G395H, 3.82-5.15 um)"])
+        writer.writerow(["paper_bolometric_Tday", f"{PAPER_BOLOMETRIC_TDAY_K[0]} +/- {PAPER_BOLOMETRIC_TDAY_K[1]}", "K (separate NIRISS/SOSS phase-curve analysis)"])
+        writer.writerow(["paper_bolometric_Tnight", f"{PAPER_BOLOMETRIC_TNIGHT_K[0]} +/- {PAPER_BOLOMETRIC_TNIGHT_K[1]}", "K (separate NIRISS/SOSS phase-curve analysis)"])
 
     fig, (ax_t, ax_c) = plt.subplots(2, 1, figsize=(9, 7), sharex=True, gridspec_kw={"hspace": 0.08})
     ax_t.fill_between(wavelength, dayside_t - dayside_t_err, dayside_t + dayside_t_err, color="#c0562a", alpha=0.2, lw=0)
@@ -117,7 +147,9 @@ def main() -> None:
     print(f"Wrote {summary_path}")
     print(f"Wrote {FIG_DIR / 'wasp121b_day_night_contrast.png'}")
     print(f"n_wave={len(wavelength)}, n_phase={len(phase)}")
-    print(f"Weighted mean day-night contrast = {mean_contrast:.1f} +/- {mean_contrast_err:.1f} K (range {contrast.min():.1f} to {contrast.max():.1f} K)")
+    print(f"Wavelength-averaged monochromatic day-night contrast (this script) = {mean_contrast:.1f} +/- {mean_contrast_err:.1f} K (range {contrast.min():.1f} to {contrast.max():.1f} K) -- NOT a bolometric temperature")
+    print(f"Paper's own nightside Tb: {PAPER_NIGHTSIDE_TB_NRS1_K[0]}+/-{PAPER_NIGHTSIDE_TB_NRS1_K[1]} K (NRS1), {PAPER_NIGHTSIDE_TB_NRS2_K[0]}+/-{PAPER_NIGHTSIDE_TB_NRS2_K[1]} K (NRS2)")
+    print(f"Separate NIRISS/SOSS bolometric result: Tday={PAPER_BOLOMETRIC_TDAY_K[0]}+/-{PAPER_BOLOMETRIC_TDAY_K[1]} K, Tnight={PAPER_BOLOMETRIC_TNIGHT_K[0]}+/-{PAPER_BOLOMETRIC_TNIGHT_K[1]} K")
 
 
 if __name__ == "__main__":

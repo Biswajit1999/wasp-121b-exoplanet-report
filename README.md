@@ -42,16 +42,29 @@ figures/                 generated plot + summary_statistics.csv
 
 ## What the numbers show
 
-Weighted mean dayside brightness temperature 2751 ± 3 K vs. nightside
-1252 ± 2 K — a day-night contrast of about 1493 ± 4 K (range roughly
-1235-1804 K across wavelength). This is a direct observational
-signature of very inefficient heat redistribution, consistent with the
-extreme irradiation this planet receives on its 1.27-day orbit. It's a
-data comparison, not a model fit, and doesn't by itself constrain wind
-speeds or redistribution efficiency the way a general-circulation-model
-comparison would.
+Wavelength-averaged dayside brightness temperature 2751 ± 3 K vs.
+nightside 1252 ± 2 K — a day-night contrast of about 1493 ± 4 K (range
+roughly 1235-1804 K across wavelength). This points to very inefficient
+heat redistribution, consistent with the extreme irradiation this
+planet receives on its 1.27-day orbit. It's a data comparison, not a
+model fit, and doesn't by itself constrain wind speeds or redistribution
+efficiency the way a general-circulation-model comparison would.
 
 ## Limitations
+
+Brightness temperature is wavelength dependent — different channels
+probe different opacities and pressures — so the ± 3-4 K quoted above
+is the statistical precision of averaging monochromatic values across
+this bandpass, not a physical uncertainty on a bolometric hemisphere
+temperature. The paper's own per-detector nightside values show this
+directly: 926 ± 12 K on one NIRSpec detector (2.70-3.72 μm) versus
+1122 ± 10 K on the other (3.82-5.15 μm) — a genuine ~200 K difference
+between two broad bands. A separate NIRISS/SOSS phase-curve analysis
+(Splinter et al. 2025), which explicitly models the part of the
+spectrum this bandpass doesn't cover, derives bolometric effective
+temperatures of Tday = 2717 ± 17 K and Tnight = 1562 ± 19 K — the
+physically meaningful numbers for an energy-budget calculation, which
+this repo's wavelength average is not intended to replace.
 
 One posterior point in the released dataset has zero reported
 uncertainty — almost certainly a fitting artifact rather than an
@@ -72,10 +85,16 @@ at that point.
 4. Evans-Soma, T.M., Sing, D.K. et al., 2025. SiO and a super-stellar
    C/O ratio in the atmosphere of the giant exoplanet WASP-121b.
    *Nature Astronomy*, 9(6), pp.845-861 (arXiv:2506.01771).
-5. Zenodo record
+5. May, E.M. et al., 2023. A JWST NIRSpec Phase Curve for WASP-121b:
+   Dayside Emission Strongest Eastward of the Substellar Point and
+   Nightside Conditions Conducive to Cloud Formation. *The Astrophysical
+   Journal Letters*, 943(1), L17 (arXiv:2301.03209).
+6. Splinter, J. et al., 2025. Precise Constraints on the Energy Budget
+   of WASP-121b from its JWST NIRISS/SOSS Phase Curve (arXiv:2509.09760).
+7. Zenodo record
    [10.5281/zenodo.20651891](https://doi.org/10.5281/zenodo.20651891),
    "WASP-121b JWST NIRSpec/G395H data products."
-6. NASA Exoplanet Archive, <https://exoplanetarchive.ipac.caltech.edu/>.
+8. NASA Exoplanet Archive, <https://exoplanetarchive.ipac.caltech.edu/>.
 
 ## Author
 

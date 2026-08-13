@@ -3,8 +3,12 @@ n_wavelength_channels,349,count
 n_phase_bins_total,36,count
 n_phase_bins_dayside_facing,4,count
 n_phase_bins_nightside_facing,4,count
-weighted_mean_dayside_brightness_temp,2722.1 +/- 1.7,K
-weighted_mean_nightside_brightness_temp,1237.5 +/- 3.3,K
-weighted_mean_day_night_contrast,1493.2 +/- 3.8,K
+wavelength_averaged_monochromatic_dayside_Tb_this_script,2722.1 +/- 1.7,K (NOT a bolometric temperature -- see docstring)
+wavelength_averaged_monochromatic_nightside_Tb_this_script,1237.5 +/- 3.3,K (NOT a bolometric temperature -- see docstring)
+wavelength_averaged_day_night_contrast_this_script,1493.2 +/- 3.8,K (weighted mean of monochromatic contrasts)
 max_day_night_contrast,1804.0 +/- 304.7,K
 min_day_night_contrast,1234.6 +/- 54.2,K
+paper_nightside_Tb_NRS1,926 +/- 12,"K (May et al. 2023, NIRSpec/G395H, 2.70-3.72 um)"
+paper_nightside_Tb_NRS2,1122 +/- 10,"K (May et al. 2023, NIRSpec/G395H, 3.82-5.15 um)"
+paper_bolometric_Tday,2717 +/- 17,K (separate NIRISS/SOSS phase-curve analysis)
+paper_bolometric_Tnight,1562 +/- 19,K (separate NIRISS/SOSS phase-curve analysis)
