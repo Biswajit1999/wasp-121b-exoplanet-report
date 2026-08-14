@@ -1,5 +1,9 @@
 # WASP-121 b — Exoplanet Atmosphere Report
 
+<img src="images/hero.png" alt="Artist's concept of WASP-121 b" width="360">
+
+*AI-generated artist's concept — not a real photograph. See the report for actual JWST NIRSpec/G395H data.*
+
 An ultra-hot Jupiter on a 1.27-day orbit, tidally distorted by its host
 star, with a measured day-night temperature contrast of roughly 1490 K.
 This repo extracts that contrast from a JWST phase-resolved emission
