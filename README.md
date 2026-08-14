@@ -38,6 +38,22 @@ index.html              the report webpage
 data/                    JWST NIRSpec/G395H phase-curve data (Zenodo)
 scripts/analyze_spectrum.py   day/night phase-averaging with propagated uncertainty
 figures/                 generated plot + summary_statistics.csv
+tests/                   unit tests + a regression check against the real data
+```
+
+## Tests
+
+`tests/test_analysis.py` checks the per-wavelength weighted-mean
+function against a hand-computed case (including that a zero-error
+point gets zero weight rather than dominating the mean), and reruns
+the full pipeline on the real downloaded phase curve, verifying it
+still reproduces the numbers this README documents — including the
+explicit "not bolometric" label staying attached to the scalar
+temperature. Runs automatically on every push via GitHub Actions; run
+locally with:
+
+```bash
+pytest tests/ -v
 ```
 
 ## What the numbers show
