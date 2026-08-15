@@ -1,8 +1,10 @@
 # WASP-121 b — Exoplanet Atmosphere Report
 
-<img src="images/hero.png" alt="Artist's concept of WASP-121 b" width="360">
+<p align="center">
+  <img src="images/hero.png" alt="Artist's concept of WASP-121 b" width="360">
+</p>
 
-*AI-generated artist's concept — not a real photograph. See the report for actual JWST NIRSpec/G395H data.*
+<p align="center"><em>AI-generated artist's concept — not a real photograph. See the report for actual JWST NIRSpec/G395H data.</em></p>
 
 An ultra-hot Jupiter on a 1.27-day orbit, tidally distorted by its host
 star, with a measured day-night temperature contrast of roughly 1490 K.
@@ -10,8 +12,7 @@ This repo extracts that contrast from a JWST phase-resolved emission
 spectroscopy dataset, propagating each point's own posterior
 uncertainty rather than reporting a bare difference of averages.
 
-**[Open the full report](index.html)** (open locally in a browser, or serve
-with `python -m http.server` from this directory).
+**[Open the full report](https://biswajit1999.github.io/wasp-121b-exoplanet-report/)** — the live GitHub Pages version. You can also open `index.html` locally in a browser, or serve it with `python -m http.server` from this directory.
 
 ## Data sources
 
