@@ -1,4 +1,11 @@
 # WASP-121 b — Exoplanet Atmosphere Report
+<!-- RESEARCH-IDENTITY-START -->
+**Independent research report by [Biswajit Jana](https://biswajit1999.github.io/Biswajit_Jana.github.io/)** · [Live report](https://biswajit1999.github.io/wasp-121b-exoplanet-report/) · [ORCID](https://orcid.org/0009-0002-2411-1891) · [Complete research portfolio](https://biswajit1999.github.io/Biswajit_Jana.github.io/research/exoplanets/)
+<!-- RESEARCH-IDENTITY-END -->
+
+
+
+
 
 <p align="center">
   <img src="images/hero.png" alt="Artist's concept of WASP-121 b" width="360">
