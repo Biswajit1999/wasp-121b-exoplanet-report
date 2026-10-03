@@ -1,0 +1,55 @@
+{
+  "source": {
+    "zenodo_record": "10.5281/zenodo.20651891",
+    "release_version": "v8",
+    "independent_observation": "one full-orbit JWST NIRSpec/G395H phase curve"
+  },
+  "detector_phase_curves": {
+    "NRS1": {
+      "wavelength_range_micron": [
+        2.7,
+        3.72
+      ],
+      "n_channels": 146,
+      "first_harmonic_descriptive_fit": {
+        "constant_ppm": 2036.4932177815165,
+        "cosine_ppm": -1878.8185739975745,
+        "sine_ppm": 96.54121296260304,
+        "chi2": 473.9905701946623,
+        "dof": 33,
+        "reduced_chi2": 14.363350611959465,
+        "transit_conjunction_ppm": 157.67464378394197,
+        "eclipse_conjunction_ppm": 3915.311791779091,
+        "peak_phase": 0.49185,
+        "peak_before_eclipse_deg": 2.9339999999999966
+      }
+    },
+    "NRS2": {
+      "wavelength_range_micron": [
+        3.82,
+        5.15
+      ],
+      "n_channels": 200,
+      "first_harmonic_descriptive_fit": {
+        "constant_ppm": 2765.4327380760406,
+        "cosine_ppm": -2145.0602994126984,
+        "sine_ppm": 88.46842903345924,
+        "chi2": 431.35011097589796,
+        "dof": 33,
+        "reduced_chi2": 13.07121548411812,
+        "transit_conjunction_ppm": 620.3724386633421,
+        "eclipse_conjunction_ppm": 4910.493037488739,
+        "peak_phase": 0.49345000000000006,
+        "peak_before_eclipse_deg": 2.35799999999998
+      }
+    }
+  },
+  "brightness_temperature_window_summary": {
+    "dayside_phase_bins": 4,
+    "nightside_phase_bins": 4,
+    "weighted_monochromatic_contrast_K": 1493.1506659379165,
+    "diagonal_formal_error_K": 3.756331053118939,
+    "warning": "Not a bolometric temperature or an energy-budget estimator."
+  },
+  "inference_boundary": "Detector-band averages and harmonic fits use diagonal formal errors. Their large reduced chi-square values show that the first harmonic and/or independence assumptions are inadequate for parameter inference."
+}

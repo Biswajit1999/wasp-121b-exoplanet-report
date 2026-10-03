@@ -12,3 +12,11 @@ paper_nightside_Tb_NRS1,926 +/- 12,"K (May et al. 2023, NIRSpec/G395H, 2.70-3.72
 paper_nightside_Tb_NRS2,1122 +/- 10,"K (May et al. 2023, NIRSpec/G395H, 3.82-5.15 um)"
 paper_bolometric_Tday,2717 +/- 17,K (separate NIRISS/SOSS phase-curve analysis)
 paper_bolometric_Tnight,1562 +/- 19,K (separate NIRISS/SOSS phase-curve analysis)
+NRS1_first_harmonic_peak_before_eclipse,2.934,degree; descriptive diagonal WLS
+NRS1_first_harmonic_eclipse_conjunction,3915.3,ppm; descriptive diagonal WLS
+NRS1_first_harmonic_transit_conjunction,157.7,ppm; descriptive diagonal WLS
+NRS1_first_harmonic_reduced_chi2,14.36,diagonal formal errors; model inadequate for inference
+NRS2_first_harmonic_peak_before_eclipse,2.358,degree; descriptive diagonal WLS
+NRS2_first_harmonic_eclipse_conjunction,4910.5,ppm; descriptive diagonal WLS
+NRS2_first_harmonic_transit_conjunction,620.4,ppm; descriptive diagonal WLS
+NRS2_first_harmonic_reduced_chi2,13.07,diagonal formal errors; model inadequate for inference
