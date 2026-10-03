@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>WASP-121 b JWST Phase-Curve Analysis | Biswajit Jana</title>
-<meta name="description" content="Report on WASP-121 b: a JWST phase-resolved emission spectrum, with each brightness-temperature point's own posterior uncertainty propagated into the day-night contrast.">
+<meta name="description" content="Reproducible WASP-121 b JWST phase-curve audit in detector-separated flux-ratio space and wavelength-dependent brightness-temperature space.">
 <!-- SEO-DISCOVERY-START -->
 <link rel="canonical" href="https://biswajit1999.github.io/wasp-121b-exoplanet-report/">
 <link rel="author" href="https://biswajit1999.github.io/Biswajit_Jana.github.io/">
@@ -12,7 +12,7 @@
 <meta name="keywords" content="WASP-121 b, astrophysics, scientific computing, reproducible research, Biswajit Jana, open science, GitHub Pages">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <meta property="og:title" content="WASP-121 b JWST Phase-Curve Analysis | Biswajit Jana">
-<meta property="og:description" content="Report on WASP-121 b: a JWST phase-resolved emission spectrum, with each brightness-temperature point&#x27;s own posterior uncertainty propagated into the day-night contrast.">
+<meta property="og:description" content="Reproducible WASP-121 b JWST phase-curve audit in detector-separated flux-ratio space and wavelength-dependent brightness-temperature space.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://biswajit1999.github.io/wasp-121b-exoplanet-report/">
 <meta property="og:image" content="https://biswajit1999.github.io/wasp-121b-exoplanet-report/figures/wasp121b_day_night_contrast.png">
@@ -20,7 +20,7 @@
 <meta property="article:author" content="https://biswajit1999.github.io/Biswajit_Jana.github.io/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="WASP-121 b JWST Phase-Curve Analysis | Biswajit Jana">
-<meta name="twitter:description" content="Report on WASP-121 b: a JWST phase-resolved emission spectrum, with each brightness-temperature point&#x27;s own posterior uncertainty propagated into the day-night contrast.">
+<meta name="twitter:description" content="Reproducible WASP-121 b JWST phase-curve audit in detector-separated flux-ratio space and wavelength-dependent brightness-temperature space.">
 <meta name="twitter:image" content="https://biswajit1999.github.io/wasp-121b-exoplanet-report/figures/wasp121b_day_night_contrast.png">
 <script type="application/ld+json">
 {
@@ -44,7 +44,7 @@
       "@id": "https://biswajit1999.github.io/wasp-121b-exoplanet-report/#report",
       "headline": "WASP-121 b JWST Phase-Curve Analysis",
       "name": "WASP-121 b JWST Phase-Curve Analysis",
-      "description": "Report on WASP-121 b: a JWST phase-resolved emission spectrum, with each brightness-temperature point's own posterior uncertainty propagated into the day-night contrast.",
+      "description": "Reproducible WASP-121 b JWST phase-curve audit in detector-separated flux-ratio space and wavelength-dependent brightness-temperature space.",
       "url": "https://biswajit1999.github.io/wasp-121b-exoplanet-report/",
       "mainEntityOfPage": "https://biswajit1999.github.io/wasp-121b-exoplanet-report/",
       "author": {
@@ -84,7 +84,7 @@
       "@type": "SoftwareSourceCode",
       "@id": "https://biswajit1999.github.io/wasp-121b-exoplanet-report/#code",
       "name": "WASP-121 b JWST Phase-Curve Analysis",
-      "description": "Report on WASP-121 b: a JWST phase-resolved emission spectrum, with each brightness-temperature point's own posterior uncertainty propagated into the day-night contrast.",
+      "description": "Reproducible WASP-121 b JWST phase-curve audit in detector-separated flux-ratio space and wavelength-dependent brightness-temperature space.",
       "url": "https://biswajit1999.github.io/wasp-121b-exoplanet-report/",
       "codeRepository": "https://github.com/Biswajit1999/wasp-121b-exoplanet-report",
       "author": {
@@ -202,24 +202,26 @@ footer a:hover { color: var(--accent); }
   </section>
 
   <section>
-    <h2>Day-night contrast, with uncertainty propagated per point</h2>
-    <p>The figure compares the brightness-temperature spectrum from phase bins closest to secondary eclipse (dayside hemisphere facing the observer) against phase bins closest to primary transit (nightside hemisphere facing the observer) — no atmospheric model is fit here, this is a direct comparison of the observed data at different orbital phases. Each point in the released dataset carries its own asymmetric posterior uncertainty; this page averages those uncertainties into a single sigma per point and combines phase bins with an inverse-variance weighted mean, so the day-night contrast comes with an actual error bar instead of being a difference of two plain averages.</p>
+    <h2>Flux-space phase curves and temperature-space contrast</h2>
+    <p>The top panel keeps NRS1 and NRS2 separate and averages the released planet/star flux ratios within each detector band at every phase. A first harmonic is overlaid only as a compact descriptive summary. The lower panels compare brightness-temperature spectra in phase windows nearest eclipse and transit. This separation matters: flux ratio is the measured observable, whereas brightness temperature is a wavelength-dependent transformation and its average is not an energy-budget temperature.</p>
     <div class="figure">
       <img src="figures/wasp121b_day_night_contrast.png" alt="WASP-121 b day vs night brightness temperature spectrum and contrast from JWST NIRSpec G395H phase curve, with propagated uncertainty bands">
-      <figcaption>Top: dayside- and nightside-facing brightness temperature spectra with 1σ bands, 349 wavelength channels, 2.7-5.2 microns. Bottom: their difference with propagated uncertainty. Generated by <code>scripts/analyze_spectrum.py</code>.</figcaption>
+      <figcaption>Top: detector-separated phase curves and descriptive first harmonics. Middle: dayside- and nightside-facing brightness-temperature spectra. Bottom: their monochromatic difference. Generated from seven Zenodo v8 products by <code>scripts/analyze_spectrum.py</code>.</figcaption>
     </div>
     <div class="stat-grid">
       <div class="stat"><span>Wavelength channels</span><strong>349</strong></div>
-      <div class="stat"><span>Wavelength-avg. dayside T (this page)</span><strong>2751 ± 3 K</strong></div>
-      <div class="stat"><span>Wavelength-avg. nightside T (this page)</span><strong>1252 ± 2 K</strong></div>
+      <div class="stat"><span>NRS1 peak before eclipse</span><strong>2.934°</strong></div>
+      <div class="stat"><span>NRS2 peak before eclipse</span><strong>2.358°</strong></div>
+      <div class="stat"><span>Wavelength-avg. dayside T (this page)</span><strong>2722.1 ± 1.7 K</strong></div>
+      <div class="stat"><span>Wavelength-avg. nightside T (this page)</span><strong>1237.5 ± 3.3 K</strong></div>
       <div class="stat"><span>Wavelength-avg. day-night contrast</span><strong>1493 ± 4 K</strong></div>
     </div>
-    <p class="callout">A day-night contrast of roughly 1490 K across this bandpass — this atmosphere redistributes heat far less efficiently than typical hot Jupiters, consistent with a dayside hot enough for silicate and metal vapor to condense out on the nightside as the gas cools while rotating away from the star. One caveat that matters here: brightness temperature is inherently wavelength-dependent, since different channels probe different opacities and pressure levels, so the ± 3-4 K on the numbers above describes only the statistical precision of averaging monochromatic values across this bandpass — it isn't a physical bolometric hemisphere temperature. The paper's own per-detector nightside values already show this directly: 926 ± 12 K on one detector (2.70-3.72 μm) versus 1122 ± 10 K on the other (3.82-5.15 μm), a real ~200 K difference between two broad bands alone. A separate JWST/NIRISS phase-curve analysis, which explicitly models the fraction of the spectrum this bandpass doesn't cover, derives proper bolometric effective temperatures of T<sub>day</sub> = 2717 ± 17 K and T<sub>night</sub> = 1562 ± 19 K — the number to use for an actual energy-budget calculation, not this page's wavelength average.</p>
+    <p class="callout">The first-harmonic conjunction estimates are 3915/158 ppm (NRS1) and 4910/620 ppm (NRS2), closely tracking the published broadband values from the same observation. This is a reproducibility cross-check, not independent confirmation. Reduced χ² values of 14.36 and 13.07 show that a first harmonic and diagonal channel errors are not adequate for inference; the peak locations therefore have no new physical uncertainty or detection significance attached here. The 1493.2 ± 3.8 K wavelength-averaged monochromatic contrast is likewise not a bolometric hemisphere temperature. For energy-budget work, use an analysis that models unobserved wavelengths, such as the cited NIRISS/SOSS result (2717 ± 17 K dayside, 1562 ± 19 K nightside).</p>
   </section>
 
   <section>
     <h2>Data and method notes</h2>
-    <p>System parameters come from the NASA Exoplanet Archive TAP service. The phase-resolved emission spectrum is reduced JWST NIRSpec/G395H data released publicly on Zenodo (record <a href="https://doi.org/10.5281/zenodo.20651891">10.5281/zenodo.20651891</a>). See <a href="data/">data/</a> for the wavelength grid, phase grid, and brightness-temperature files (values plus asymmetric upper/lower posterior uncertainties) exactly as downloaded, and <a href="scripts/analyze_spectrum.py">scripts/analyze_spectrum.py</a> for the phase-averaging analysis (<code>python scripts/analyze_spectrum.py</code> to rerun it). One posterior point in the released data has zero reported uncertainty, almost certainly a fitting artifact rather than an infinitely precise measurement; the script assigns it zero weight instead of letting it dominate the average.</p>
+    <p>System parameters come from the NASA Exoplanet Archive TAP service. Seven numerical products are pinned to Zenodo v8 (record <a href="https://doi.org/10.5281/zenodo.20651891">10.5281/zenodo.20651891</a>): phase and wavelength grids, flux-ratio values/errors, and brightness-temperature values with asymmetric errors. See <a href="data/SOURCE.md">source provenance</a>, the <a href="scripts/analyze_spectrum.py">analysis</a>, <a href="figures/analysis_summary.json">machine-readable summary</a>, and <a href="figures/detector_phase_curves.csv">derived phase curves</a>. Source identities and matrix shapes are checked by <code>scripts/validate_data.py</code>. Inter-channel covariance is unavailable; diagonal formal errors are not treated as physical parameter uncertainties.</p>
   </section>
 
   <section>

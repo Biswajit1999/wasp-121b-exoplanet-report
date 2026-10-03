@@ -14,10 +14,10 @@
 <p align="center"><em>AI-generated artist's concept — not a real photograph. See the report for actual JWST NIRSpec/G395H data.</em></p>
 
 An ultra-hot Jupiter on a 1.27-day orbit, tidally distorted by its host
-star, with a measured day-night temperature contrast of roughly 1490 K.
-This repo extracts that contrast from a JWST phase-resolved emission
-spectroscopy dataset, propagating each point's own posterior
-uncertainty rather than reporting a bare difference of averages.
+star. This repo audits a public JWST NIRSpec/G395H phase-resolved emission
+dataset in both the directly measured planet/star flux-ratio space and the
+derived brightness-temperature space. Detector-band phase curves are kept
+separate, while the temperature contrast remains explicitly non-bolometric.
 
 **[Open the full report](https://biswajit1999.github.io/wasp-121b-exoplanet-report/)** — the live GitHub Pages version. You can also open `index.html` locally in a browser, or serve it with `python -m http.server` from this directory.
 
@@ -25,18 +25,16 @@ uncertainty rather than reporting a bare difference of averages.
 
 - **System parameters** — from the NASA Exoplanet Archive TAP
   service (`pscomppars` table).
-- **Phase-resolved emission spectrum** — reduced JWST NIRSpec/G395H
-  data: brightness temperature (with asymmetric posterior uncertainty)
-  as a function of both wavelength (349 channels, 2.7-5.2 microns) and
-  orbital phase (36 bins spanning almost a full orbit), from
+- **Phase-resolved emission spectrum** — Zenodo v8 JWST NIRSpec/G395H
+  planet/star flux ratio and brightness temperature as functions of wavelength
+  (349 channels, 2.7-5.2 microns) and orbital phase (36 out-of-transit/eclipse
+  bins), from
   Evans-Soma, Sing et al. (2025), released publicly on Zenodo
   ([10.5281/zenodo.20651891](https://doi.org/10.5281/zenodo.20651891)).
-- **Analysis** — `scripts/analyze_spectrum.py` combines the brightness-
-  temperature spectrum over phase bins nearest secondary eclipse
-  (dayside-facing) and nearest primary transit (nightside-facing) with
-  an inverse-variance weighted mean, using each point's own symmetrized
-  posterior uncertainty, and propagates that into an error bar on the
-  day-night contrast at every wavelength. Run it yourself:
+- **Analysis** — `scripts/analyze_spectrum.py` constructs separate NRS1 and
+  NRS2 flux-ratio phase curves, fits descriptive first harmonics, and retains
+  the phase-window brightness-temperature comparison as a secondary spectral
+  view. Every fit is labelled with its diagonal-error limitation. Run it:
 
   ```bash
   pip install -r requirements.txt
@@ -47,10 +45,11 @@ uncertainty rather than reporting a bare difference of averages.
 
 ```text
 index.html              the report webpage
-data/                    JWST NIRSpec/G395H phase-curve data (Zenodo)
-scripts/analyze_spectrum.py   day/night phase-averaging with propagated uncertainty
-figures/                 generated plot + summary_statistics.csv
-tests/                   unit tests + a regression check against the real data
+data/                    seven pinned JWST NIRSpec/G395H Zenodo v8 products
+scripts/analyze_spectrum.py   detector phase curves + temperature audit
+scripts/validate_data.py      cross-platform source identity and shape checks
+figures/                 generated figure, CSV phase curves, summary CSV/JSON
+tests/                   analytic, regression, failure-mode, and output tests
 ```
 
 ## Tests
@@ -70,17 +69,30 @@ pytest tests/ -v
 
 ## What the numbers show
 
-Wavelength-averaged dayside brightness temperature 2751 ± 3 K vs.
-nightside 1252 ± 2 K — a day-night contrast of about 1493 ± 4 K (range
-roughly 1235-1804 K across wavelength). This points to very inefficient
-heat redistribution, consistent with the extreme irradiation this
-planet receives on its 1.27-day orbit. It's a data comparison, not a
-model fit, and doesn't by itself constrain wind speeds or redistribution
-efficiency the way a general-circulation-model comparison would.
+The detector-band flux curves are the primary result. Descriptive first-
+harmonic fits peak 2.934° (NRS1) and 2.358° (NRS2) before eclipse. Their
+conjunction estimates are 3915/158 ppm for NRS1 and 4910/620 ppm for NRS2
+(eclipse/transit). These same-observation estimates closely track the
+published broadband values and hotspot offsets; they are a reproducibility
+cross-check, not independent confirmation. Reduced χ² values of 14.36 and
+13.07 show that a first harmonic plus diagonal formal errors is inadequate for
+parameter inference, so this repo does not attach detection significance or
+physical uncertainty to those descriptive offsets.
+
+The secondary temperature view gives wavelength-averaged monochromatic values
+of 2722.1 ± 1.7 K for dayside-facing bins and 1237.5 ± 3.3 K for
+nightside-facing bins, with a 1493.2 ± 3.8 K contrast. These tiny formal errors
+must not be interpreted as uncertainties on hemisphere effective temperatures.
 
 ## Limitations
 
-Brightness temperature is wavelength dependent — different channels
+Detector-band averages assume independent wavelength-channel errors, although
+the release provides no inter-channel covariance. The large harmonic-fit
+reduced χ² values empirically warn against using those formal errors for
+inference. The phase bins exclude the transit and eclipse themselves, so
+conjunction values are model interpolations across gaps.
+
+Brightness temperature is wavelength dependent—different channels
 probe different opacities and pressures — so the ± 3-4 K quoted above
 is the statistical precision of averaging monochromatic values across
 this bandpass, not a physical uncertainty on a bolometric hemisphere
@@ -94,11 +106,9 @@ temperatures of Tday = 2717 ± 17 K and Tnight = 1562 ± 19 K — the
 physically meaningful numbers for an energy-budget calculation, which
 this repo's wavelength average is not intended to replace.
 
-One posterior point in the released dataset has zero reported
-uncertainty — almost certainly a fitting artifact rather than an
-infinitely precise measurement. The script assigns it zero weight
-instead of letting a literal 1/error² blow up into an infinite weight
-at that point.
+One point in the brightness-temperature uncertainty products is zero; it is
+excluded from the relevant inverse-variance average rather than treated as
+infinitely precise. The flux-ratio uncertainty matrix contains no zero values.
 
 ## References
 
