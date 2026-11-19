@@ -1,0 +1,61 @@
+{
+  "project": "WASP-121 b — Exoplanet Atmosphere Report",
+  "repository": "https://github.com/Biswajit1999/wasp-121b-exoplanet-report",
+  "files": [
+    {
+      "label": "Data source notes",
+      "path": "data/SOURCE.md",
+      "role": "Data and provenance"
+    },
+    {
+      "label": "Emspec fpfs uncs",
+      "path": "data/emspec_fpfs_uncs.txt",
+      "role": "Data and provenance"
+    },
+    {
+      "label": "Emspec fpfs vals",
+      "path": "data/emspec_fpfs_vals.txt",
+      "role": "Data and provenance"
+    },
+    {
+      "label": "Emspec phi",
+      "path": "data/emspec_phi.txt",
+      "role": "Data and provenance"
+    },
+    {
+      "label": "Emspec tbright uncs lower",
+      "path": "data/emspec_tbright_uncs_lower.txt",
+      "role": "Data and provenance"
+    },
+    {
+      "label": "Emspec tbright uncs upper",
+      "path": "data/emspec_tbright_uncs_upper.txt",
+      "role": "Data and provenance"
+    },
+    {
+      "label": "Emspec tbright vals",
+      "path": "data/emspec_tbright_vals.txt",
+      "role": "Data and provenance"
+    },
+    {
+      "label": "Analysis summary",
+      "path": "figures/analysis_summary.json",
+      "role": "Tables and numerical results"
+    },
+    {
+      "label": "Summary statistics",
+      "path": "figures/summary_statistics.csv",
+      "role": "Tables and numerical results"
+    },
+    {
+      "label": "Detector phase curves",
+      "path": "figures/detector_phase_curves.csv",
+      "role": "Tables and numerical results"
+    },
+    {
+      "label": "Wasp121b day night contrast",
+      "path": "figures/wasp121b_day_night_contrast.png",
+      "role": "Figures"
+    }
+  ]
+}

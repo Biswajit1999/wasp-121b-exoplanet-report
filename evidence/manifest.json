@@ -1,0 +1,181 @@
+{
+  "schema": 1,
+  "project": "WASP-121 b — Exoplanet Atmosphere Report",
+  "repository": "https://github.com/Biswajit1999/wasp-121b-exoplanet-report",
+  "files": [
+    {
+      "label": "Data source notes",
+      "path": "data/SOURCE.md",
+      "role": "Data and provenance",
+      "bytes": 1739,
+      "sha256": "59443a77a8807f9ce68100a96a99b768b97c3c62fc9aa2804cd8cc906d9be4f3",
+      "hash_basis": "LF-normalised text",
+      "format": "MD"
+    },
+    {
+      "label": "Emspec fpfs uncs",
+      "path": "data/emspec_fpfs_uncs.txt",
+      "role": "Data and provenance",
+      "bytes": 314299,
+      "sha256": "c1e671c8d3566a543f61117e6b4c2b6d53cf55014e167bb976a46a40981bd354",
+      "hash_basis": "LF-normalised text",
+      "format": "TXT"
+    },
+    {
+      "label": "Emspec fpfs vals",
+      "path": "data/emspec_fpfs_vals.txt",
+      "role": "Data and provenance",
+      "bytes": 314311,
+      "sha256": "e0b233d9510fc92cd101fca3544a7e5eacd3f2fe42171808a586e77dc0c1dc48",
+      "hash_basis": "LF-normalised text",
+      "format": "TXT"
+    },
+    {
+      "label": "Emspec phi",
+      "path": "data/emspec_phi.txt",
+      "role": "Data and provenance",
+      "bytes": 2981,
+      "sha256": "efdb9bb5ab1fc230b216e851d0cf83e1351f90888b969acace505faafb2cc2a2",
+      "hash_basis": "LF-normalised text",
+      "format": "TXT"
+    },
+    {
+      "label": "Emspec tbright uncs lower",
+      "path": "data/emspec_tbright_uncs_lower.txt",
+      "role": "Data and provenance",
+      "bytes": 314261,
+      "sha256": "25b8826c5f462c62334d54734ea8cef56a4abed8b09a315dd6b9fc61ddea4180",
+      "hash_basis": "LF-normalised text",
+      "format": "TXT"
+    },
+    {
+      "label": "Emspec tbright uncs upper",
+      "path": "data/emspec_tbright_uncs_upper.txt",
+      "role": "Data and provenance",
+      "bytes": 314261,
+      "sha256": "627e1216e28cd9180aeea825f8d3d3840feee7900ca80346a6d3e2812cc8cf41",
+      "hash_basis": "LF-normalised text",
+      "format": "TXT"
+    },
+    {
+      "label": "Emspec tbright vals",
+      "path": "data/emspec_tbright_vals.txt",
+      "role": "Data and provenance",
+      "bytes": 314248,
+      "sha256": "43de958f6d2377a980f0658354b54cc10154618464a7dd5f42eb8520248a7083",
+      "hash_basis": "LF-normalised text",
+      "format": "TXT"
+    },
+    {
+      "label": "Analysis summary",
+      "path": "figures/analysis_summary.json",
+      "role": "Tables and numerical results",
+      "bytes": 1922,
+      "sha256": "2e72293aa99d236d32d532680b329969a8735626a1de2dca7b4b923dbcefb937",
+      "hash_basis": "LF-normalised text",
+      "format": "JSON",
+      "keys": [
+        "source",
+        "detector_phase_curves",
+        "brightness_temperature_window_summary",
+        "inference_boundary"
+      ],
+      "arrays": {}
+    },
+    {
+      "label": "Summary statistics",
+      "path": "figures/summary_statistics.csv",
+      "role": "Tables and numerical results",
+      "bytes": 1581,
+      "sha256": "74ff9ce9d411c92a7657437e2c8b96d9b787ead40c416dd48ef7a9e3405b80e5",
+      "hash_basis": "LF-normalised text",
+      "format": "CSV",
+      "rows": 21,
+      "columns": 3,
+      "headers": [
+        "quantity",
+        "value",
+        "unit"
+      ],
+      "preview": [
+        [
+          "n_wavelength_channels",
+          "349",
+          "count"
+        ],
+        [
+          "n_phase_bins_total",
+          "36",
+          "count"
+        ],
+        [
+          "n_phase_bins_dayside_facing",
+          "4",
+          "count"
+        ],
+        [
+          "n_phase_bins_nightside_facing",
+          "4",
+          "count"
+        ]
+      ]
+    },
+    {
+      "label": "Detector phase curves",
+      "path": "figures/detector_phase_curves.csv",
+      "role": "Tables and numerical results",
+      "bytes": 3476,
+      "sha256": "959cfa2a2f595615d5ba1260a95f2320a2f8841543ee5e6fa8db4b65e40f1e77",
+      "hash_basis": "LF-normalised text",
+      "format": "CSV",
+      "rows": 36,
+      "columns": 5,
+      "headers": [
+        "phase",
+        "nrs1_fpfs_ppm",
+        "nrs1_formal_error_ppm",
+        "nrs2_fpfs_ppm",
+        "nrs2_formal_error_ppm"
+      ],
+      "preview": [
+        [
+          "-0.5865839084495871",
+          "3838.6117081583825",
+          "12.244512203320285",
+          "4716.533310816056",
+          "16.25506631764573"
+        ],
+        [
+          "-0.5615279694831957",
+          "3863.002989915472",
+          "12.212747247126353",
+          "4815.361017776458",
+          "16.221856949842046"
+        ],
+        [
+          "-0.4384720305168044",
+          "3668.136367872994",
+          "12.07889065363337",
+          "4644.666392850227",
+          "16.03203468762585"
+        ],
+        [
+          "-0.41341609155041303",
+          "3554.354966114096",
+          "12.057525393662763",
+          "4462.522110176372",
+          "16.017900926250682"
+        ]
+      ]
+    },
+    {
+      "label": "Wasp121b day night contrast",
+      "path": "figures/wasp121b_day_night_contrast.png",
+      "role": "Figures",
+      "bytes": 451593,
+      "sha256": "42185cd64b2689bb0ded82fb9ac5c7b5fac09e066d547ee6ceeb623f18ab6737",
+      "hash_basis": "exact bytes",
+      "format": "PNG"
+    }
+  ]
+}
